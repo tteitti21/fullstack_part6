@@ -1,3 +1,4 @@
+// npm test -- -t "<matcher>"
 import deepFreeze from 'deep-freeze'
 import counterReducer from './reducer'
 
