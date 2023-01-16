@@ -23,6 +23,9 @@ const initialState = anecdotesAtStart.map(asObject)
 
 /** Do something to the state.*/
 const reducer = (state = initialState, action) => {
+
+  //const ordState = state.sort( (a,b) => a.value - b.value) no work?
+
   switch(action.type) {
     case 'VOTE':
       const id = action.data.id
@@ -32,10 +35,12 @@ const reducer = (state = initialState, action) => {
         votes: anecdoteToChange.votes + 1
       }
       return state.map(anec => anec.id !== id ? anec : withAddedVote)
+        .sort( (a,b) => b.votes - a.votes)
       
       case 'CREATE':
         const newAnec = asObject(action.data.anecdote)
         return state.concat(newAnec)
+          .sort( (a,b) => b.votes - a.votes)
     default: 
       return state
     }
