@@ -18,6 +18,20 @@ const asObject = (anecdote) => {
   }
 }
 
+export const createVoteDispatch = (id) => {
+  return {
+    type: 'VOTE',
+    data: { id }
+  }
+}
+
+export const createAnecdote = (anecdote) => {
+  return {
+    type: 'CREATE',
+    data: { anecdote }
+  }
+}
+
 /** Makes list of store objects */
 const initialState = anecdotesAtStart.map(asObject)
 
