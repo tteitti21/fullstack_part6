@@ -1,13 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-/** Returns integer */
-const getId = () => (100000 * Math.random()).toFixed(0)
-
 /** Creates store object of anecdotes. */
-const asObject = (anecdote) => {
+export const anecObject = (anecdote) => {
   return {
     content: anecdote,
-    id: getId(),
     votes: 0
   }
 }
@@ -18,7 +14,7 @@ const anecdoteReducer = createSlice({
   initialState: [],
   reducers: {
     createAnecdote(state, action) {
-        const newAnec = asObject(action.payload)
+        const newAnec = action.payload
         return state.concat(newAnec)
         .sort( (a,b) => b.votes - a.votes)
       },
@@ -40,5 +36,6 @@ const anecdoteReducer = createSlice({
       }
     }
 })
+
 
 export default anecdoteReducer.reducer
