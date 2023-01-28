@@ -21,7 +21,6 @@ export const setNotification = (text, time) => {
   return async dispatch => {
     dispatch({ type: 'notification/changeNotification', 
     payload: text })
-    console.log('hei')
     setTimeout(() => {
       dispatch({ type: 'notification/resetNotification' })
     }, time*1000) 
